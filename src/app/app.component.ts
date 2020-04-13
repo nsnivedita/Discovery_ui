@@ -22,7 +22,6 @@ export class AppComponent {
   paths: Path;
   displayData: boolean;
   constructor(public fb: FormBuilder,private dataService: DataService) {
-    console.log(this.findSource.value +  ""+ this.findDestination.value)
    }
    ngOnInit() {
     this.dataService.findAll().subscribe(data=>{
@@ -36,20 +35,17 @@ export class AppComponent {
    
   }
 
-  findSource = this.fb.group({
-    sourcePlanetname:['']
-    
-  })
-  findDestination = this.fb.group({
-    
+  findPath = this.fb.group({
+    sourcePlanetname:[''],
     destinationPlanetname:['']
+    
   })
+  
 
   
 
   findShortestDistance() {
-    console.log(this.findSource.value.sourcePlanetname +  " "+ this.findDestination.value.destinationPlanetname)
-    let paths = new Path('A',this.findSource.value.sourcePlanetname,'',this.findDestination.value.destinationPlanetname,null);
+    let paths = new Path('A',this.findPath.value.sourcePlanetname,'',this.findPath.value.destinationPlanetname,null);
 
     this.dataService.findDirection(paths).subscribe(data=>{
       this.planet=data.path});
