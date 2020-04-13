@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card bg-info my-5" style="height: 80%;">
+        <div class="card-body">
+          <h2 class="card-title text-center text-white py-3">Transport System</h2>
+          
+            <ul class="text-center list-inline py-3">
+              <li class="list-inline-item">
+                <div>
+                  <form [formGroup]="findSource">
+                    <select formControlName="sourcePlanetname" class="form-control">
+                      <option disabled>Select Source Planet</option>
+                      <option>Choose Source Planet</option>
+                      <option *ngFor="let source of sourcePlanet">{{source}}</option>
+                    </select>
+                    </form>
+                </div>
+                
+                  </li>
+              <li class="list-inline-item">
+                <div>
+                  <br/>
+                  <form [formGroup]="findDestination">
+                    <select formControlName="destinationPlanetname" class="form-control">
+                      <option disabled>Select Destination Planet</option>
+                      <option>Choose Destination Planet</option>
+                      <option *ngFor="let destination of destinationPlanet">{{destination}}</option>
+                    </select>
+                    </form>
+                </div>
+                  </li>
+            </ul><br>
+            <div style="text-align: center;">
+            <!--<button class="btn btn-secondary" type="submit">Find Path</button>-->
+            <button class="btn btn-primary" type="submit" (click)="findShortestDistance()">Find Shortest Path</button>
+
+          </div>
+           
+          
+         
+         
+         
+        </div>
+      </div>
+   
+    </div>
+    <div class="col-md-6">
+      <div class="card bg-info my-5" style="height: 80%;">
+        <div class="card-body" style="text-align:center ;">
+          <h2 class="card-title text-center text-white py-3">Shortest Path</h2>
+          <div *ngIf="displayData">
+          <span *ngFor="let p of planet" style="font-size: 24px;color: #776567;">
+            <i class="fa fa-long-arrow-right" aria-hidden="true"></i> <b style="padding:15px;">{{p.name}}</b> 
+           </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+
